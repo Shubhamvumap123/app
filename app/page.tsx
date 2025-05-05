@@ -27,9 +27,9 @@ export default function Home() {
           <div className="flex items-center space-x-4">
             <Link
               href="/contact"
-              className="hidden md:inline-flex bg-white text-teal-900 px-4 py-2 rounded text-sm font-medium hover:bg-teal-100 transition-colors"
+              className="hidden md:inline-flex bg-transparent border border-white text-white px-4 py-2 rounded text-sm font-medium hover:bg-teal-100 transition-colors"
             >
-              Book a Court
+             contact
             </Link>
             <button className="md:hidden text-white">
               <Menu className="h-6 w-6" />
@@ -67,9 +67,9 @@ export default function Home() {
             </Link>
             <Link
               href="/contact"
-              className="border border-white text-white px-6 py-3 rounded font-medium hover:bg-white/10 transition-colors"
+              className="border border-white/100 text-white px-6 py-3 rounded-full font-medium rounded-tl-none rounded-tr-none"
             >
-              Book a Court
+              Contact
             </Link>
           </div>
         </div>
