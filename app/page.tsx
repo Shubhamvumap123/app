@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Header/Navigation */}
-      <header className="fixed w-full bg-teal-900/90 z-50">
+      <header  className="fixed w-full z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
-            <Image src="/logo.svg" alt="9 Clay Courts" width={120} height={40} className="h-8 w-auto" />
+            <Image src="/SSA.svg" alt="9 Clay Courts" width={120} height={40} className="h-8 w-auto" />
           </div>
           <nav className="hidden md:flex space-x-6">
             {["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog", "Contact"].map(
@@ -42,10 +42,10 @@ export default function Home() {
       <section className="relative h-screen">
         <div className="absolute inset-0">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HOMEPAGE%204.png-SOfZIZ15QGrFojap37T7WycaAb4hip.jpeg"
+            src="/logo.png"
             alt="Tennis courts at sunset"
             fill
-            className="object-cover brightness-75"
+            className="object-cover brightness-7"
             priority
           />
         </div>
