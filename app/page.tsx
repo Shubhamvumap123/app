@@ -12,7 +12,7 @@ export default function Home() {
             <Image src="/SSA.svg" alt="9 Clay Courts" width={120} height={40} className="h-8 w-auto" />
           </div>
           <nav className="hidden md:flex space-x-6">
-            {["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog", "Contact"].map(
+            {["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog"].map(
               (item) => (
                 <Link
                   key={item}
