@@ -65,12 +65,7 @@ export default function Home() {
             >
               Explore Our Programs
             </Link>
-            <Link
-              href="/contact"
-              className="border border-white/100 text-white px-6 py-3 rounded-full font-medium rounded-tl-none rounded-tr-none"
-            >
-              Contact
-            </Link>
+      
           </div>
         </div>
       </section>
