@@ -3,6 +3,9 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
 const Hero = () => {
     return (
         <section className="relative h-screen">
