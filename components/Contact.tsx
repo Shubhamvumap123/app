@@ -1,12 +1,9 @@
 "use client"
 
 import React from 'react';
-import { ChevronRight, MapPin, Phone, Mail, Clock } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-
+import Image from "next/image"
+import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 const Contact = () => {
     return (
         <section className="py-20 bg-teal-900 text-white relative">

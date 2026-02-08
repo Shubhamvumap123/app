@@ -4,15 +4,6 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import { BookingModal } from "@/components/BookingModal"
-import { cn } from "@/lib/utils"
-
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 

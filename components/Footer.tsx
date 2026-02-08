@@ -3,10 +3,6 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Youtube, Send } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-
 const Footer = () => {
     return (
         <footer className="bg-teal-950 text-white py-16">
