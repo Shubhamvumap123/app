@@ -3,7 +3,10 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, ArrowRight } from "lucide-react"
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+
 const Programs = () => {
     return (
        <section className="py-20 bg-gray-50">

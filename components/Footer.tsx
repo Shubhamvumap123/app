@@ -3,6 +3,10 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Facebook, Twitter, Instagram, Youtube, Send } from "lucide-react"
+
 const Footer = () => {
     return (
         <footer className="bg-teal-950 text-white py-16">
@@ -52,7 +56,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 {["Home", "About", "Programs", "Facilities", "Coaches"].map((item) => (
                   <li key={item}>
-                    <Link href={`/${item.toLowerCase()}`} className="text-teal-100 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    <Link href={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="text-teal-100 hover:text-white hover:translate-x-1 transition-all inline-block">
                       {item}
                     </Link>
                   </li>

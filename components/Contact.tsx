@@ -3,7 +3,12 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, MapPin, Phone, Mail, Clock } from "lucide-react"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button"
+
 const Contact = () => {
     return (
         <section className="py-20 bg-teal-900 text-white relative">
