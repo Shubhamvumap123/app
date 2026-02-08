@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 const Header: React.FC = () => {
     return (
         <header  className="fixed w-full z-50">

@@ -1,6 +1,3 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ChevronRight, Key, Menu } from "lucide-react"
 import Header from "../components/header"
 import Hero from "../components/Hero"
 import About from "../components/About"

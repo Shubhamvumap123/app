@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight, Menu } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 const About = () => {
     return (
         <section className="py-20 bg-white">
