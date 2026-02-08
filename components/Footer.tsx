@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight, Key, Menu } from "lucide-react"
 const Footer = () => {
     return (
         <footer className="bg-teal-900 text-white py-12">
