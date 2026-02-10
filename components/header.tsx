@@ -39,9 +39,9 @@ const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
         <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
                  <Image
-                    src="/SSA.svg"
+                    src="/ssa-logo.svg"
                     alt="SSA Logo"
-                    width={120}
+                    width={133}
                     height={40}
                     className="h-10 w-auto"
                  />

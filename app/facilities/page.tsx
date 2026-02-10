@@ -5,6 +5,7 @@ import Header from "@/components/header"
 import Footer from "@/components/Footer"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { BookingModal } from "@/components/BookingModal"
 
 export default function FacilitiesPage() {
   const facilities = [
@@ -92,9 +93,11 @@ export default function FacilitiesPage() {
         <section className="bg-teal-50 py-16 mt-16">
             <div className="container mx-auto px-4 text-center">
                 <h2 className="text-2xl font-bold text-teal-900 mb-4">Ready to experience our facilities?</h2>
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
-                    Book a Tour
-                </Button>
+                <BookingModal title="Book a Facility Tour" description="Select a date and time for your tour.">
+                    <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
+                        Book a Tour
+                    </Button>
+                </BookingModal>
             </div>
         </section>
       </main>

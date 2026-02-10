@@ -7,6 +7,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Calendar, Clock, MapPin } from "lucide-react"
+import { BookingModal } from "@/components/BookingModal"
 
 export default function EventsPage() {
   const events = [
@@ -87,9 +88,11 @@ export default function EventsPage() {
                                 </div>
                                 <p className="text-gray-700 mb-4">{event.description}</p>
                             </div>
-                            <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white self-start">
-                                Register / RSVP
-                            </Button>
+                            <BookingModal title={`RSVP for ${event.title}`} description={`Confirm your attendance for ${event.title}.`}>
+                                <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white self-start">
+                                    Register / RSVP
+                                </Button>
+                            </BookingModal>
                         </div>
                     </Card>
                 ))}

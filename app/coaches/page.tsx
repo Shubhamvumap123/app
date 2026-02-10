@@ -4,8 +4,10 @@ import React from 'react';
 import Header from "@/components/header"
 import Footer from "@/components/Footer"
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
+import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { BookingModal } from "@/components/BookingModal"
 
 export default function CoachesPage() {
   const coaches = [
@@ -74,9 +76,11 @@ export default function CoachesPage() {
                         <h2 className="text-2xl font-bold text-teal-900 mb-1">{coach.name}</h2>
                         <p className="text-teal-600 font-semibold mb-4">{coach.title}</p>
                         <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">{coach.bio}</p>
-                        <Button variant="outline" className="mt-auto border-teal-600 text-teal-600 hover:bg-teal-50">
-                            Book a Lesson
-                        </Button>
+                        <BookingModal title={`Book a Lesson with ${coach.name}`} description="Select a date and time for your lesson.">
+                            <Button variant="outline" className="mt-auto border-teal-600 text-teal-600 hover:bg-teal-50">
+                                Book a Lesson
+                            </Button>
+                        </BookingModal>
                     </Card>
                 ))}
             </div>
@@ -88,9 +92,11 @@ export default function CoachesPage() {
                 <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
                     Are you a passionate tennis professional looking to make a difference? We are always looking for talented coaches to join our academy.
                 </p>
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
-                    Careers at SSA
-                </Button>
+                <Link href="/#contact">
+                    <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
+                        Careers at SSA
+                    </Button>
+                </Link>
             </div>
         </section>
       </main>
