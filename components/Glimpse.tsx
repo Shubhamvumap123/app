@@ -11,7 +11,7 @@ const Glimpse = () => {
             <h2 className="text-4xl font-extrabold text-teal-900 mb-6 tracking-tight">A Glimpse of Excellence</h2>
             <div className="w-24 h-1.5 bg-teal-500 mx-auto rounded-full"></div>
             <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">
-                Experience the atmosphere and energy that makes Southern Slam Academy unique.
+                Experience the atmosphere and energy that makes Southern Academy unique.
             </p>
           </div>
 

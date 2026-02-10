@@ -15,18 +15,18 @@ const Footer = () => {
             <div>
               <div className="flex items-center gap-2 mb-4">
                  <Image
-                    src="/logo-white.svg"
-                    alt="Southern Slam Academy"
+                    src="/sa-logo-white.svg"
+                    alt="Southern Academy"
                     width={150}
                     height={50}
                     className="h-10 w-auto"
                   />
                   {/* Fallback text if logo fails or is transparent */}
-                  <span className="font-bold text-xl tracking-tight">SSA</span>
+                  <span className="font-bold text-xl tracking-tight">Southern Academy</span>
               </div>
 
               <p className="text-teal-100 text-sm mb-6 leading-relaxed">
-                Southern Slam Academy is dedicated to developing tennis players of all levels in a supportive and
+                Southern Academy is dedicated to developing tennis players of all levels in a supportive and
                 professional environment. Join us to elevate your game.
               </p>
 
@@ -77,7 +77,7 @@ const Footer = () => {
                 </li>
                 <li className="flex flex-col">
                     <span className="font-semibold text-teal-300 text-sm">Email</span>
-                    <span>info@southernslam.com</span>
+                    <span>info@southernacademy.com</span>
                 </li>
               </ul>
             </div>
@@ -102,7 +102,7 @@ const Footer = () => {
 
           <div className="pt-8 border-t border-teal-900 flex flex-col md:flex-row justify-between items-center text-sm text-teal-300">
             <p>
-              © {new Date().getFullYear()} Southern Slam Academy. All rights reserved.
+              © {new Date().getFullYear()} Southern Academy. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/privacy" className="hover:text-white transition-colors">

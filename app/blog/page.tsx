@@ -53,7 +53,7 @@ export default function BlogPage() {
         <section className="container mx-auto px-4 mb-12 text-center">
             <h1 className="text-4xl font-bold text-teal-900 mb-4">The Baseline Blog</h1>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                Insights, tips, and news from the experts at Southern Slam Academy.
+                Insights, tips, and news from the experts at Southern Academy.
             </p>
         </section>
 

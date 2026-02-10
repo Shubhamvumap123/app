@@ -13,7 +13,7 @@ const Quote = () => {
             role: "Director"
         },
         {
-            text: "Southern Slam Academy transformed my game. The coaches are top-notch and the facilities are amazing.",
+            text: "Southern Academy transformed my game. The coaches are top-notch and the facilities are amazing.",
             author: "Sarah Johnson",
             role: "Academy Student"
         },

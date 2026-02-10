@@ -13,7 +13,7 @@ export default function AboutPage() {
       <main className="flex-grow pt-24">
         <section className="bg-teal-900 text-white py-20">
             <div className="container mx-auto px-4 text-center">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">About Southern Slam Academy</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">About Southern Academy</h1>
                 <p className="text-xl text-teal-100 max-w-2xl mx-auto">
                     Where passion meets performance. We are dedicated to nurturing the next generation of tennis champions.
                 </p>
@@ -26,7 +26,7 @@ export default function AboutPage() {
                     <div>
                         <h2 className="text-3xl font-bold text-teal-900 mb-6">Our Story</h2>
                         <p className="text-gray-700 mb-4 leading-relaxed">
-                            Founded in 2010, Southern Slam Academy began with a simple mission: to provide world-class tennis training in a supportive and inclusive environment. What started as a small clinic with just two courts has grown into a premier tennis destination with state-of-the-art facilities and a team of expert coaches.
+                            Founded in 2010, Southern Academy began with a simple mission: to provide world-class tennis training in a supportive and inclusive environment. What started as a small clinic with just two courts has grown into a premier tennis destination with state-of-the-art facilities and a team of expert coaches.
                         </p>
                         <p className="text-gray-700 mb-4 leading-relaxed">
                             We believe that tennis is more than just a sport; it's a vehicle for personal growth, discipline, and community building. Our holistic approach focuses on technical skills, physical fitness, and mental toughness.

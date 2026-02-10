@@ -94,7 +94,7 @@ export default function CoachesPage() {
                 </p>
                 <Link href="/#contact">
                     <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
-                        Careers at SSA
+                        Careers at SA
                     </Button>
                 </Link>
             </div>

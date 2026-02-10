@@ -29,7 +29,7 @@ export default function BlogPostPage() {
                 <h1 className="text-4xl font-bold text-teal-900 mb-4">{title}</h1>
                 <div className="flex items-center text-gray-500 mb-8 text-sm">
                     <span className="mr-4">Published on April 15, 2024</span>
-                    <span>By SSA Team</span>
+                    <span>By SA Team</span>
                 </div>
             </div>
 

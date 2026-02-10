@@ -17,3 +17,6 @@
  GET /events 200 in 1074ms (compile: 945ms, render: 129ms)
  GET /facilities 200 in 717ms (compile: 631ms, render: 86ms)
  GET /blog/my-test-post 200 in 1414ms (compile: 1292ms, render: 122ms)
+✓ Compiled in 1531ms
+✓ Compiled in 2s
+ GET / 200 in 2.4s (compile: 876ms, render: 1561ms)

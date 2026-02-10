@@ -7,7 +7,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "9 Clay Courts | Southern Slam Tennis Academy",
+  title: "9 Clay Courts | Southern Academy",
   description: "Premier tennis academy offering world-class coaching and facilities for players of all levels",
     generator: 'v0.dev'
 }

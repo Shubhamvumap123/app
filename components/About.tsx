@@ -11,7 +11,7 @@ const About = () => {
               <h2 className="text-3xl font-bold text-teal-900 mb-4">About Us</h2>
               <p className="text-gray-700 mb-6">
                 Located in the most scenic area of the country, our 9 world-class clay courts are at your location and
-                available. Find your ideal tennis academy experience at Southern Slam Tennis Academy, where passion and
+                available. Find your ideal tennis academy experience at Southern Academy, where passion and
                 excellence meet.
               </p>
               <p className="text-gray-700 mb-8">

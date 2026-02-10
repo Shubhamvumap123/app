@@ -22,7 +22,7 @@ const Hero = () => {
             GROW YOUR GAME <br/> <span className="text-teal-400">WITH THE PROS</span>
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-gray-100 max-w-3xl mb-12 drop-shadow-lg animate-fade-in-up delay-200 leading-relaxed">
-            Southern Slam Academy offers world-class tennis coaching, state-of-the-art facilities, and a community for players of all levels.
+            Southern Academy offers world-class tennis coaching, state-of-the-art facilities, and a community for players of all levels.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto animate-fade-in-up delay-300">
             <Button asChild size="lg" className="bg-teal-500 hover:bg-teal-400 text-white border-none text-xl py-8 px-10 h-auto rounded-full shadow-lg hover:shadow-teal-500/50 hover:scale-105 transition-all duration-300">
