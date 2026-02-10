@@ -12,8 +12,19 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 
-export function BookingModal({ children }: { children: React.ReactNode }) {
+interface BookingModalProps {
+  children: React.ReactNode;
+  title?: string;
+  description?: string;
+}
+
+export function BookingModal({
+  children,
+  title = "Book a Court",
+  description = "Select a date and time to reserve a court."
+}: BookingModalProps) {
   const [date, setDate] = useState<Date | undefined>(new Date())
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -32,19 +43,22 @@ export function BookingModal({ children }: { children: React.ReactNode }) {
 
   const handleBook = () => {
     if (date && selectedTime) {
-      alert(`Booked for ${date.toDateString()} at ${selectedTime}`)
-      setIsOpen(false)
+      toast.success(`${title} successful for ${date.toDateString()} at ${selectedTime}`);
+      setIsOpen(false);
+      setSelectedTime(null);
     }
   }
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogTrigger asChild>
+        {children}
+      </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Book a Court</DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
           <DialogDescription>
-            Select a date and time to reserve a court.
+            {description}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -81,7 +95,7 @@ export function BookingModal({ children }: { children: React.ReactNode }) {
             disabled={!date || !selectedTime}
             className="bg-teal-600 hover:bg-teal-700 text-white"
           >
-            Confirm Booking
+            Confirm
           </Button>
         </div>
       </DialogContent>

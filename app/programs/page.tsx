@@ -6,6 +6,7 @@ import Footer from "@/components/Footer"
 import Image from "next/image"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { BookingModal } from "@/components/BookingModal"
 
 export default function ProgramsPage() {
   const programs = [
@@ -95,9 +96,11 @@ export default function ProgramsPage() {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold">
-                                Register Now
-                            </Button>
+                            <BookingModal title={`Register for ${program.title}`} description={`Select a start date for ${program.title}.`}>
+                                <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold">
+                                    Register Now
+                                </Button>
+                            </BookingModal>
                         </CardFooter>
                     </Card>
                 ))}
