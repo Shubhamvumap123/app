@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
@@ -86,21 +87,29 @@ const Contact = () => {
                         <form className="space-y-4" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium">Name</label>
-                                    <Input id="name" placeholder="John Doe" value={formData.name} onChange={handleChange} required />
+                                    <Label htmlFor="name">
+                                        Name <span className="text-red-500" aria-hidden="true">*</span>
+                                    </Label>
+                                    <Input id="name" placeholder="John Doe" value={formData.name} onChange={handleChange} required aria-required="true" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium">Email</label>
-                                    <Input id="email" type="email" placeholder="john@example.com" value={formData.email} onChange={handleChange} required />
+                                    <Label htmlFor="email">
+                                        Email <span className="text-red-500" aria-hidden="true">*</span>
+                                    </Label>
+                                    <Input id="email" type="email" placeholder="john@example.com" value={formData.email} onChange={handleChange} required aria-required="true" />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-medium">Subject</label>
-                                <Input id="subject" placeholder="Program Inquiry" value={formData.subject} onChange={handleChange} required />
+                                <Label htmlFor="subject">
+                                    Subject <span className="text-red-500" aria-hidden="true">*</span>
+                                </Label>
+                                <Input id="subject" placeholder="Program Inquiry" value={formData.subject} onChange={handleChange} required aria-required="true" />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium">Message</label>
-                                <Textarea id="message" placeholder="How can we help you?" className="min-h-[120px]" value={formData.message} onChange={handleChange} required />
+                                <Label htmlFor="message">
+                                    Message <span className="text-red-500" aria-hidden="true">*</span>
+                                </Label>
+                                <Textarea id="message" placeholder="How can we help you?" className="min-h-[120px]" value={formData.message} onChange={handleChange} required aria-required="true" />
                             </div>
                             <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold" disabled={loading}>
                                 {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</> : "Send Message"}
