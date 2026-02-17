@@ -1,5 +1,4 @@
-"use client"
-
+// Server Component for performance
 import React from 'react';
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
