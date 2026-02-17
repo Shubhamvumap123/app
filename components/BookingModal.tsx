@@ -3,6 +3,8 @@
 import React, { useState } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Check } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -71,22 +73,35 @@ export function BookingModal({
             />
           </div>
           {date && (
-            <div className="grid grid-cols-3 gap-2">
-              {timeSlots.map((time) => (
-                <Button
-                  key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
-                  className={cn(
-                    "text-xs",
-                    selectedTime === time && "bg-teal-600 hover:bg-teal-700"
-                  )}
-                >
-                  {time}
-                </Button>
-              ))}
-            </div>
+            <>
+              <ToggleGroup
+                type="single"
+                value={selectedTime || ""}
+                onValueChange={(value) => setSelectedTime(value || null)}
+                className="grid grid-cols-3 gap-2"
+              >
+                {timeSlots.map((time) => (
+                  <ToggleGroupItem
+                    key={time}
+                    value={time}
+                    aria-label={selectedTime === time ? `Selected time ${time}` : `Select time ${time}`}
+                    variant="outline"
+                    className={cn(
+                      "h-9 w-full text-xs hover:bg-teal-50 hover:text-teal-900 transition-colors",
+                      "data-[state=on]:bg-teal-600 data-[state=on]:text-white data-[state=on]:hover:bg-teal-700"
+                    )}
+                  >
+                    {time}
+                    {selectedTime === time && <Check className="ml-2 h-3 w-3" />}
+                  </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+              <div className="text-center mt-3 h-5">
+                <p aria-live="polite" className="text-sm font-medium text-teal-800">
+                  {date && selectedTime ? `Selected: ${date.toDateString()} at ${selectedTime}` : ""}
+                </p>
+              </div>
+            </>
           )}
         </div>
         <div className="flex justify-end">
