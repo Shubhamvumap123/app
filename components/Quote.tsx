@@ -1,5 +1,3 @@
-"use client"
-
 import React from 'react';
 import { Quote as QuoteIcon } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
