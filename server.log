@@ -1,5 +1,5 @@
 
-> my-v0-project@0.1.0 start
+> my-v0-project@0.1.0 start /app
 > next start
 
 ▲ Next.js 16.1.6
@@ -7,4 +7,4 @@
 - Network:       http://192.168.0.2:3000
 
 ✓ Starting...
-✓ Ready in 309ms
+✓ Ready in 289ms
