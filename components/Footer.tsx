@@ -91,6 +91,8 @@ const Footer = () => {
                 <Input
                     type="email"
                     placeholder="Your email address"
+                    aria-label="Email address"
+                    required
                     className="bg-teal-900 border-teal-800 text-white placeholder:text-teal-400 focus-visible:ring-teal-500"
                 />
                 <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold">
