@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
   Dialog,
   DialogContent,
@@ -71,22 +72,31 @@ export function BookingModal({
             />
           </div>
           {date && (
-            <div className="grid grid-cols-3 gap-2">
-              {timeSlots.map((time) => (
-                <Button
-                  key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
-                  className={cn(
-                    "text-xs",
-                    selectedTime === time && "bg-teal-600 hover:bg-teal-700"
-                  )}
-                >
-                  {time}
-                </Button>
-              ))}
-            </div>
+            <>
+              <ToggleGroup
+                type="single"
+                value={selectedTime || ""}
+                onValueChange={(value) => value && setSelectedTime(value)}
+                className="grid grid-cols-3 gap-2"
+                aria-label="Select time slot"
+              >
+                {timeSlots.map((time) => (
+                  <ToggleGroupItem
+                    key={time}
+                    value={time}
+                    variant="outline"
+                    size="sm"
+                    aria-label={time}
+                    className="text-xs data-[state=on]:bg-teal-600 data-[state=on]:text-white hover:bg-teal-50 data-[state=on]:hover:bg-teal-700"
+                  >
+                    {time}
+                  </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+              <p className="sr-only" aria-live="polite">
+                {selectedTime ? `Selected time: ${selectedTime}` : "No time selected"}
+              </p>
+            </>
           )}
         </div>
         <div className="flex justify-end">
