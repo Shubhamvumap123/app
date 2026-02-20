@@ -11,7 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { cn } from "@/lib/utils"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { toast } from "sonner"
 
 interface BookingModalProps {
@@ -49,6 +49,10 @@ export function BookingModal({
     }
   }
 
+  const handleTimeChange = (value: string) => {
+    if (value) setSelectedTime(value);
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
@@ -71,22 +75,25 @@ export function BookingModal({
             />
           </div>
           {date && (
-            <div className="grid grid-cols-3 gap-2">
+            <ToggleGroup
+              type="single"
+              value={selectedTime || ""}
+              onValueChange={handleTimeChange}
+              className="grid grid-cols-3 gap-2"
+              aria-label="Select a time slot"
+            >
               {timeSlots.map((time) => (
-                <Button
+                <ToggleGroupItem
                   key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
-                  className={cn(
-                    "text-xs",
-                    selectedTime === time && "bg-teal-600 hover:bg-teal-700"
-                  )}
+                  value={time}
+                  variant="outline"
+                  aria-label={`Select ${time}`}
+                  className="h-9 w-full text-xs data-[state=on]:bg-teal-600 data-[state=on]:text-white hover:bg-teal-50 data-[state=on]:hover:bg-teal-700"
                 >
                   {time}
-                </Button>
+                </ToggleGroupItem>
               ))}
-            </div>
+            </ToggleGroup>
           )}
         </div>
         <div className="flex justify-end">
