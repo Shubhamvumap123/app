@@ -1,5 +1,3 @@
-"use client"
-
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
@@ -7,7 +5,33 @@ import { ChevronRight, ArrowRight } from "lucide-react"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
+interface Program {
+    title: string;
+    description: string;
+    image: string;
+}
+
+// Optimization: Moved static data outside component to prevent recreation on every render
+const programs: Program[] = [
+    {
+       title: "Academy",
+       description: "Full-time training for aspiring professionals.",
+       image: "/placeholder.svg?height=300&width=400"
+    },
+    {
+       title: "Camps",
+       description: "Intensive weekly camps for skill development.",
+       image: "/placeholder.svg?height=300&width=400"
+    },
+    {
+       title: "Performance",
+       description: "High-performance coaching for tournament players.",
+       image: "/placeholder.svg?height=300&width=400"
+    },
+]
+
 const Programs = () => {
+    // Optimization: Converted to Server Component by removing "use client" to reduce bundle size
     return (
        <section className="py-20 bg-gray-50">
                <div className="container mx-auto px-4">
@@ -20,23 +44,7 @@ const Programs = () => {
                  </div>
        
                  <div className="grid md:grid-cols-3 gap-8">
-                   {[
-                     {
-                        title: "Academy",
-                        description: "Full-time training for aspiring professionals.",
-                        image: "/placeholder.svg?height=300&width=400"
-                     },
-                     {
-                        title: "Camps",
-                        description: "Intensive weekly camps for skill development.",
-                        image: "/placeholder.svg?height=300&width=400"
-                     },
-                     {
-                        title: "Performance",
-                        description: "High-performance coaching for tournament players.",
-                        image: "/placeholder.svg?height=300&width=400"
-                     },
-                   ].map((program, index) => (
+                   {programs.map((program, index) => (
                      <Card key={index} className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">
                        <div className="aspect-[4/3] relative overflow-hidden">
                          <Image
