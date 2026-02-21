@@ -1,5 +1,5 @@
 
-> my-v0-project@0.1.0 dev
+> my-v0-project@0.1.0 dev /app
 > next dev
 
 ▲ Next.js 16.1.6 (Turbopack)
@@ -7,13 +7,8 @@
 - Network:       http://192.168.0.2:3000
 
 ✓ Starting...
-✓ Ready in 1049ms
+✓ Ready in 686ms
 ○ Compiling / ...
- GET / 200 in 9.4s (compile: 8.3s, render: 1138ms)
- GET / 200 in 423ms (compile: 67ms, render: 356ms)
- GET / 200 in 241ms (compile: 4ms, render: 237ms)
- GET /programs 200 in 1117ms (compile: 994ms, render: 123ms)
- GET /coaches 200 in 989ms (compile: 853ms, render: 136ms)
- GET /events 200 in 1074ms (compile: 945ms, render: 129ms)
- GET /facilities 200 in 717ms (compile: 631ms, render: 86ms)
- GET /blog/my-test-post 200 in 1414ms (compile: 1292ms, render: 122ms)
+ GET / 200 in 5.7s (compile: 4.9s, render: 736ms)
+✓ Compiled in 199ms
+ GET / 200 in 1421ms (compile: 271ms, render: 1151ms)
