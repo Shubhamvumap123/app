@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
   Dialog,
   DialogContent,
@@ -71,22 +72,28 @@ export function BookingModal({
             />
           </div>
           {date && (
-            <div className="grid grid-cols-3 gap-2">
+            <ToggleGroup
+              type="single"
+              value={selectedTime || ""}
+              onValueChange={(value) => value && setSelectedTime(value)}
+              className="grid grid-cols-3 gap-2"
+              aria-label="Available time slots"
+            >
               {timeSlots.map((time) => (
-                <Button
+                <ToggleGroupItem
                   key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
+                  value={time}
+                  variant="outline"
+                  aria-label={time}
                   className={cn(
-                    "text-xs",
-                    selectedTime === time && "bg-teal-600 hover:bg-teal-700"
+                    "text-xs w-full",
+                    "data-[state=on]:bg-teal-600 data-[state=on]:text-white data-[state=on]:hover:bg-teal-700 data-[state=on]:hover:text-white"
                   )}
                 >
                   {time}
-                </Button>
+                </ToggleGroupItem>
               ))}
-            </div>
+            </ToggleGroup>
           )}
         </div>
         <div className="flex justify-end">
