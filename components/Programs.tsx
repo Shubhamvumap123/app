@@ -1,11 +1,38 @@
-"use client"
-
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight, ArrowRight } from "lucide-react"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+
+// ⚡ Bolt Optimization:
+// Converted from Client Component to Server Component to reduce JS bundle size.
+// Extracted static `programs` array to avoid recreation on every render.
+// Expected Impact: Reduced hydration cost and faster initial paint for this section.
+
+interface Program {
+    title: string;
+    description: string;
+    image: string;
+}
+
+const programs: Program[] = [
+    {
+       title: "Academy",
+       description: "Full-time training for aspiring professionals.",
+       image: "/placeholder.svg?height=300&width=400"
+    },
+    {
+       title: "Camps",
+       description: "Intensive weekly camps for skill development.",
+       image: "/placeholder.svg?height=300&width=400"
+    },
+    {
+       title: "Performance",
+       description: "High-performance coaching for tournament players.",
+       image: "/placeholder.svg?height=300&width=400"
+    },
+];
 
 const Programs = () => {
     return (
@@ -20,23 +47,7 @@ const Programs = () => {
                  </div>
        
                  <div className="grid md:grid-cols-3 gap-8">
-                   {[
-                     {
-                        title: "Academy",
-                        description: "Full-time training for aspiring professionals.",
-                        image: "/placeholder.svg?height=300&width=400"
-                     },
-                     {
-                        title: "Camps",
-                        description: "Intensive weekly camps for skill development.",
-                        image: "/placeholder.svg?height=300&width=400"
-                     },
-                     {
-                        title: "Performance",
-                        description: "High-performance coaching for tournament players.",
-                        image: "/placeholder.svg?height=300&width=400"
-                     },
-                   ].map((program, index) => (
+                   {programs.map((program, index) => (
                      <Card key={index} className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">
                        <div className="aspect-[4/3] relative overflow-hidden">
                          <Image
