@@ -3,6 +3,8 @@
 import React, { useState } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Loader2 } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -28,6 +30,7 @@ export function BookingModal({
   const [date, setDate] = useState<Date | undefined>(new Date())
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const timeSlots = [
     "09:00 AM",
@@ -41,11 +44,16 @@ export function BookingModal({
     "05:00 PM",
   ]
 
-  const handleBook = () => {
+  const handleBook = async () => {
     if (date && selectedTime) {
+      setIsLoading(true)
+      // Simulate network request
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
       toast.success(`${title} successful for ${date.toDateString()} at ${selectedTime}`);
       setIsOpen(false);
       setSelectedTime(null);
+      setIsLoading(false)
     }
   }
 
@@ -71,31 +79,38 @@ export function BookingModal({
             />
           </div>
           {date && (
-            <div className="grid grid-cols-3 gap-2">
+            <ToggleGroup
+              type="single"
+              value={selectedTime || ""}
+              onValueChange={(value) => {
+                if (value) setSelectedTime(value)
+              }}
+              className="grid grid-cols-3 gap-2"
+            >
               {timeSlots.map((time) => (
-                <Button
+                <ToggleGroupItem
                   key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
+                  value={time}
+                  variant="outline"
+                  aria-label={`Select ${time}`}
                   className={cn(
-                    "text-xs",
-                    selectedTime === time && "bg-teal-600 hover:bg-teal-700"
+                    "text-xs w-full",
+                    selectedTime === time && "bg-teal-600 hover:bg-teal-700 text-white hover:text-white data-[state=on]:bg-teal-600 data-[state=on]:text-white"
                   )}
                 >
                   {time}
-                </Button>
+                </ToggleGroupItem>
               ))}
-            </div>
+            </ToggleGroup>
           )}
         </div>
         <div className="flex justify-end">
           <Button
             onClick={handleBook}
-            disabled={!date || !selectedTime}
-            className="bg-teal-600 hover:bg-teal-700 text-white"
+            disabled={!date || !selectedTime || isLoading}
+            className="bg-teal-600 hover:bg-teal-700 text-white min-w-[100px]"
           >
-            Confirm
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Confirm"}
           </Button>
         </div>
       </DialogContent>
