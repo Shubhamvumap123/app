@@ -1,15 +1,28 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
+import { z } from "zod";
+
+const contactSchema = z.object({
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Please enter a valid email address"),
+    subject: z.string().min(5, "Subject must be at least 5 characters"),
+    message: z.string().min(10, "Message must be at least 10 characters").max(1000, "Message is too long"),
+});
+
+const sanitizeInput = (input: string) => {
+    return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+};
 
 const Contact = () => {
     const [loading, setLoading] = useState(false);
+    const lastSubmitTime = useRef<number>(0);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -23,10 +36,36 @@ const Contact = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Rate limiting (1 minute)
+        const now = Date.now();
+        if (now - lastSubmitTime.current < 60000) {
+            toast.error("Please wait a minute before sending another message.");
+            return;
+        }
+
+        // Sanitize input
+        const sanitizedData = {
+            name: sanitizeInput(formData.name),
+            email: sanitizeInput(formData.email),
+            subject: sanitizeInput(formData.subject),
+            message: sanitizeInput(formData.message),
+        };
+
+        // Validate input
+        const result = contactSchema.safeParse(sanitizedData);
+        if (!result.success) {
+            result.error.issues.forEach((issue) => {
+                toast.error(issue.message);
+            });
+            return;
+        }
+
         setLoading(true);
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
 
+        lastSubmitTime.current = Date.now();
         toast.success("Message sent! We'll get back to you soon.");
         setFormData({ name: "", email: "", subject: "", message: "" });
         setLoading(false);
