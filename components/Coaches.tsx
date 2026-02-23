@@ -1,11 +1,21 @@
-"use client"
-
 import React from 'react';
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+
+interface Coach {
+  name: string;
+  title: string;
+  image: string;
+}
+
+const coaches: Coach[] = [
+  { name: "Craig Peel", title: "Director", image: "/placeholder.svg?height=300&width=300" },
+  { name: "Stephen Powell", title: "Head Coach", image: "/placeholder.svg?height=300&width=300" },
+  { name: "Matthew Paulson", title: "Performance Coach", image: "/placeholder.svg?height=300&width=300" },
+];
 
 const Coaches = () => {
     return (
@@ -20,11 +30,7 @@ const Coaches = () => {
                 </div>
       
                 <div className="grid md:grid-cols-3 gap-8">
-                  {[
-                    { name: "Craig Peel", title: "Director", image: "/placeholder.svg?height=300&width=300" },
-                    { name: "Stephen Powell", title: "Head Coach", image: "/placeholder.svg?height=300&width=300" },
-                    { name: "Matthew Paulson", title: "Performance Coach", image: "/placeholder.svg?height=300&width=300" },
-                  ].map((coach, index) => (
+                  {coaches.map((coach, index) => (
                     <Card key={index} className="text-center border-none shadow-lg hover:shadow-xl transition-shadow bg-white overflow-hidden">
                         <CardContent className="pt-8 pb-8 flex flex-col items-center">
                             <div className="relative h-40 w-40 mb-6 rounded-full overflow-hidden border-4 border-teal-100 shadow-md">
