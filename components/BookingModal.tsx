@@ -3,6 +3,8 @@
 import React, { useState } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Loader2 } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -28,6 +30,7 @@ export function BookingModal({
   const [date, setDate] = useState<Date | undefined>(new Date())
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const timeSlots = [
     "09:00 AM",
@@ -43,9 +46,13 @@ export function BookingModal({
 
   const handleBook = () => {
     if (date && selectedTime) {
-      toast.success(`${title} successful for ${date.toDateString()} at ${selectedTime}`);
-      setIsOpen(false);
-      setSelectedTime(null);
+      setIsLoading(true)
+      setTimeout(() => {
+        toast.success(`${title} successful for ${date.toDateString()} at ${selectedTime}`)
+        setIsOpen(false)
+        setSelectedTime(null)
+        setIsLoading(false)
+      }, 1000)
     }
   }
 
@@ -71,31 +78,43 @@ export function BookingModal({
             />
           </div>
           {date && (
-            <div className="grid grid-cols-3 gap-2">
+            <ToggleGroup
+              type="single"
+              value={selectedTime || undefined}
+              onValueChange={(value) => {
+                if (value) setSelectedTime(value)
+              }}
+              className="grid grid-cols-3 gap-2"
+              aria-label="Select a time slot"
+            >
               {timeSlots.map((time) => (
-                <Button
+                <ToggleGroupItem
                   key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
-                  className={cn(
-                    "text-xs",
-                    selectedTime === time && "bg-teal-600 hover:bg-teal-700"
-                  )}
+                  value={time}
+                  variant="outline"
+                  className="text-xs data-[state=on]:bg-teal-600 data-[state=on]:text-white hover:bg-teal-50"
+                  aria-label={`Select ${time}`}
                 >
                   {time}
-                </Button>
+                </ToggleGroupItem>
               ))}
-            </div>
+            </ToggleGroup>
           )}
         </div>
         <div className="flex justify-end">
           <Button
             onClick={handleBook}
-            disabled={!date || !selectedTime}
-            className="bg-teal-600 hover:bg-teal-700 text-white"
+            disabled={!date || !selectedTime || isLoading}
+            className="bg-teal-600 hover:bg-teal-700 text-white min-w-[100px]"
           >
-            Confirm
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Booking...
+              </>
+            ) : (
+              "Confirm"
+            )}
           </Button>
         </div>
       </DialogContent>
