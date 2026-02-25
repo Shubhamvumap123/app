@@ -1,6 +1,13 @@
 import React from 'react';
 import Image from "next/image"
 
+const FACILITIES = [
+  { title: "Clay Courts", image: "/placeholder.svg?height=300&width=500" },
+  { title: "Accommodation", image: "/placeholder.svg?height=300&width=500" },
+  { title: "Fitness Center", image: "/placeholder.svg?height=300&width=500" },
+  { title: "Swimming Pool", image: "/placeholder.svg?height=300&width=500" },
+];
+
 const Facilities = () => {
     return (
        <section className="py-20 bg-gray-100">
@@ -13,12 +20,7 @@ const Facilities = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { title: "Clay Courts", image: "/placeholder.svg?height=300&width=500" },
-              { title: "Accommodation", image: "/placeholder.svg?height=300&width=500" },
-              { title: "Fitness Center", image: "/placeholder.svg?height=300&width=500" },
-              { title: "Swimming Pool", image: "/placeholder.svg?height=300&width=500" },
-            ].map((facility, index) => (
+            {FACILITIES.map((facility, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg">
                 <div className="aspect-video relative">
                   <Image
