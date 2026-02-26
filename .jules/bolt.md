@@ -1,0 +1,3 @@
+## 2024-05-23 - [Server Components & Data Hoisting]
+**Learning:** Many presentational components (`Hero`, `Programs`, `Coaches`, etc.) were unnecessarily marked with `"use client"`, forcing them into the client bundle. Removing this directive and hoisting static data to module-level constants reduces bundle size and improves initial page load performance by leveraging React Server Components.
+**Action:** Always audit components for `"use client"` usage. If a component doesn't use hooks or event handlers, it should likely be a Server Component. Hoist static data arrays outside the component to avoid re-creation on render.

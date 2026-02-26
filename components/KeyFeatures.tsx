@@ -1,5 +1,22 @@
 import React from 'react';
 
+interface KeyFeature {
+    id: number;
+    title: string;
+    description: string;
+}
+
+const keyFeaturesData: KeyFeature[] = [
+    { id: 1, title: "Top-quality clay courts", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 2, title: "Professional coaching staff", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 3, title: "Personalized training programs", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 4, title: "Modern facilities and equipment", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 5, title: "Video analysis technology", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 6, title: "Fitness and conditioning center", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 7, title: "Tournament preparation", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+    { id: 8, title: "All skill levels welcome", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+];
+
 const KeyFeatures = () => {
     return (
     <section className="py-20 bg-white">
@@ -10,27 +27,19 @@ const KeyFeatures = () => {
               </div>
     
               <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-                  <div key={item} className="flex items-start">
+                {keyFeaturesData.map((feature) => (
+                  <div key={feature.id} className="flex items-start">
                     <div className="flex-shrink-0 mr-4">
                       <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-900 font-bold">
-                        {item}
+                        {feature.id}
                       </div>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-teal-900 mb-2">
-                        {item === 1 && "Top-quality clay courts"}
-                        {item === 2 && "Professional coaching staff"}
-                        {item === 3 && "Personalized training programs"}
-                        {item === 4 && "Modern facilities and equipment"}
-                        {item === 5 && "Video analysis technology"}
-                        {item === 6 && "Fitness and conditioning center"}
-                        {item === 7 && "Tournament preparation"}
-                        {item === 8 && "All skill levels welcome"}
+                        {feature.title}
                       </h3>
                       <p className="text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua.
+                        {feature.description}
                       </p>
                     </div>
                   </div>
