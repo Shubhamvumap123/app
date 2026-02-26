@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
   Dialog,
   DialogContent,
@@ -13,6 +14,7 @@ import {
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
+import { Loader2 } from "lucide-react"
 
 interface BookingModalProps {
   children: React.ReactNode;
@@ -26,8 +28,9 @@ export function BookingModal({
   description = "Select a date and time to reserve a court."
 }: BookingModalProps) {
   const [date, setDate] = useState<Date | undefined>(new Date())
-  const [selectedTime, setSelectedTime] = useState<string | null>(null)
+  const [selectedTime, setSelectedTime] = useState<string | undefined>(undefined)
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const timeSlots = [
     "09:00 AM",
@@ -41,11 +44,16 @@ export function BookingModal({
     "05:00 PM",
   ]
 
-  const handleBook = () => {
+  const handleBook = async () => {
     if (date && selectedTime) {
-      toast.success(`${title} successful for ${date.toDateString()} at ${selectedTime}`);
-      setIsOpen(false);
-      setSelectedTime(null);
+      setIsLoading(true)
+      // Simulate network request
+      await new Promise(resolve => setTimeout(resolve, 1000))
+
+      toast.success(`${title} successful for ${date.toDateString()} at ${selectedTime}`)
+      setIsLoading(false)
+      setIsOpen(false)
+      setSelectedTime(undefined)
     }
   }
 
@@ -71,31 +79,39 @@ export function BookingModal({
             />
           </div>
           {date && (
-            <div className="grid grid-cols-3 gap-2">
+            <ToggleGroup
+              type="single"
+              value={selectedTime || ""}
+              onValueChange={(val) => { if (val) setSelectedTime(val) }}
+              className="grid grid-cols-3 gap-2"
+            >
               {timeSlots.map((time) => (
-                <Button
+                <ToggleGroupItem
                   key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
-                  className={cn(
-                    "text-xs",
-                    selectedTime === time && "bg-teal-600 hover:bg-teal-700"
-                  )}
+                  value={time}
+                  aria-label={`Select ${time}`}
+                  className="text-xs w-full data-[state=on]:bg-teal-600 data-[state=on]:text-white hover:data-[state=on]:bg-teal-700"
                 >
                   {time}
-                </Button>
+                </ToggleGroupItem>
               ))}
-            </div>
+            </ToggleGroup>
           )}
         </div>
         <div className="flex justify-end">
           <Button
             onClick={handleBook}
-            disabled={!date || !selectedTime}
-            className="bg-teal-600 hover:bg-teal-700 text-white"
+            disabled={!date || !selectedTime || isLoading}
+            className="bg-teal-600 hover:bg-teal-700 text-white min-w-[100px]"
           >
-            Confirm
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Wait
+              </>
+            ) : (
+              "Confirm"
+            )}
           </Button>
         </div>
       </DialogContent>
