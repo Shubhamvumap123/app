@@ -17,12 +17,23 @@ const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      // ⚡ Bolt: Throttle scroll event to prevent main thread blocking and unnecessary re-renders
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // ⚡ Bolt: Mark event listener as passive to allow browser to scroll immediately without waiting for JS
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const effectiveScrolled = forceScrolled || isScrolled;
 

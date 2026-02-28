@@ -1,0 +1,3 @@
+## 2024-05-14 - [Throttled Scroll Event Listener]
+**Learning:** High-frequency event listeners (like `scroll` or `resize`) can cause excessive re-renders and block the main thread if not throttled. Additionally, setting `{ passive: true }` allows the browser to perform default actions (like scrolling) immediately without waiting for JavaScript execution.
+**Action:** Always throttle high-frequency event listeners using `requestAnimationFrame` and a `ticking` flag to improve performance and prevent main thread blocking. Always mark non-preventable event listeners as `{ passive: true }`.
