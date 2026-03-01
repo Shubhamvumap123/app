@@ -1,0 +1,3 @@
+## 2024-05-24 - [Hoist Static Data in Client Components]
+**Learning:** In React Client Components within a Next.js App Router architecture, arrays and objects defined directly inside the component function scope are re-allocated on every single render. This triggers unnecessary garbage collection overhead and prevents React from bailing out of renders effectively, especially for complex filtering or mapping operations.
+**Action:** Always hoist static configuration data (e.g., predefined categories, hardcoded image lists, static maps) completely outside the component function scope to ensure stable memory references. For derived data based on props/state, use `useMemo` to cache the result across renders.
