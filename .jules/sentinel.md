@@ -1,0 +1,4 @@
+## 2026-03-01 - [CSS Injection via dangerouslySetInnerHTML]
+**Vulnerability:** The application was using `dangerouslySetInnerHTML` to inject raw styling configs into `<style>` tags in `components/ui/chart.tsx`. If these properties could be influenced by user input, a CSS injection vulnerability leading to Cross-Site Scripting (XSS) could occur.
+**Learning:** React escapes content in JSX, but not inside `dangerouslySetInnerHTML`. Injecting unsanitized content directly into `<style>` tags circumvents these protections and must be carefully reviewed to ensure variables like `--color-x` only contain safe values.
+**Prevention:** Values injected into CSS through `dangerouslySetInnerHTML` should be strictly validated against safe patterns or properly sanitized (e.g., stripping characters such as `['";{}<>]`) to ensure they cannot escape the CSS context.
