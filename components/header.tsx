@@ -13,20 +13,29 @@ interface HeaderProps {
     forceScrolled?: boolean;
 }
 
+// Performance optimization: Hoist static data outside component
+const NAV_ITEMS = ["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog"]
+
 const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 10)
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+    // Performance optimization: mark listener as passive and use requestAnimationFrame
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const effectiveScrolled = forceScrolled || isScrolled;
-
-  const navItems = ["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog"]
 
   return (
     <header
@@ -49,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
         </div>
 
         <nav className="hidden md:flex space-x-6">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item}
               href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
@@ -85,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col space-y-4 mt-8">
-                {navItems.map((item) => (
+                {NAV_ITEMS.map((item) => (
                   <Link
                     key={item}
                     href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
