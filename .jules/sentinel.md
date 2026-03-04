@@ -1,0 +1,4 @@
+## 2025-03-04 - CSS Injection XSS via `dangerouslySetInnerHTML` in `<style>`
+**Vulnerability:** CSS variables (like colors) injected into `<style>` tags using `dangerouslySetInnerHTML` in `ChartStyle` were not sanitized, allowing potential CSS injection attacks which can lead to XSS.
+**Learning:** `dangerouslySetInnerHTML` combined with `<style>` tags creates a vector for CSS injection. Even if the data appears safe (e.g., color configurations), characters like `['";{}<>]` can allow an attacker to escape the CSS context and inject malicious payloads.
+**Prevention:** Sanitize CSS variables by stripping risky characters (e.g., `str.replace(/['";{}<>]/g, "")`) before injecting them via `dangerouslySetInnerHTML` inside `<style>` tags to ensure they stay contained within the intended property definition.
