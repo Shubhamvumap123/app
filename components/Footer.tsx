@@ -1,13 +1,30 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "next/image"
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Facebook, Twitter, Instagram, Youtube, Send } from "lucide-react"
+import { Facebook, Twitter, Instagram, Youtube, Send, Loader2 } from "lucide-react"
+import { toast } from "sonner"
 
 const Footer = () => {
+    const [email, setEmail] = useState("");
+    const [isSubscribing, setIsSubscribing] = useState(false);
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setIsSubscribing(true);
+        // Simulate API call delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        toast.success("Subscribed to newsletter!");
+        setEmail("");
+        setIsSubscribing(false);
+    };
+
     return (
         <footer className="bg-teal-950 text-white py-16">
         <div className="container mx-auto px-4">
@@ -87,14 +104,27 @@ const Footer = () => {
               <p className="text-teal-100 text-sm mb-4">
                 Subscribe to our newsletter for the latest updates, tips, and events.
               </p>
-              <form className="flex flex-col gap-2" onSubmit={(e) => { e.preventDefault(); alert("Subscribed!"); }}>
+              <form className="flex flex-col gap-2" onSubmit={handleSubscribe}>
                 <Input
                     type="email"
                     placeholder="Your email address"
                     className="bg-teal-900 border-teal-800 text-white placeholder:text-teal-400 focus-visible:ring-teal-500"
+                    aria-label="Email address for newsletter"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isSubscribing}
                 />
-                <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold">
-                    Subscribe <Send className="ml-2 h-4 w-4" />
+                <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold" disabled={isSubscribing}>
+                    {isSubscribing ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...
+                      </>
+                    ) : (
+                      <>
+                        Subscribe <Send className="ml-2 h-4 w-4" />
+                      </>
+                    )}
                 </Button>
               </form>
             </div>
