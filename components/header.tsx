@@ -17,10 +17,19 @@ const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 10)
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+    // Optimization: Add passive flag to improve scroll performance
+    // and use requestAnimationFrame to throttle state updates
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
