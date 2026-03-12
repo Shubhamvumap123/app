@@ -1,28 +1,35 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Header from "@/components/header"
 import Footer from "@/components/Footer"
 import Image from "next/image"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 
+// Performance: Hoisted static arrays out of the component scope to avoid unnecessary
+// re-allocation and garbage collection during re-renders.
+const IMAGES = [
+  { src: "/placeholder.svg?height=600&width=800", alt: "Tournament Final", category: "Tournaments" },
+  { src: "/placeholder.svg?height=800&width=600", alt: "Junior Training", category: "Training" },
+  { src: "/placeholder.svg?height=600&width=600", alt: "Clay Courts", category: "Facilities" },
+  { src: "/placeholder.svg?height=600&width=800", alt: "Awards Ceremony", category: "Events" },
+  { src: "/placeholder.svg?height=800&width=600", alt: "Coach Stephen", category: "Coaches" },
+  { src: "/placeholder.svg?height=600&width=600", alt: "New Gym Equipment", category: "Facilities" },
+  { src: "/placeholder.svg?height=600&width=800", alt: "Summer Camp Group", category: "Camps" },
+  { src: "/placeholder.svg?height=800&width=600", alt: "Action Shot", category: "Tournaments" },
+  { src: "/placeholder.svg?height=600&width=600", alt: "Sunset Courts", category: "Facilities" },
+];
+
+const CATEGORIES = ["All", "Tournaments", "Training", "Facilities", "Events", "Coaches", "Camps"];
+
 export default function GalleryPage() {
-  const images = [
-    { src: "/placeholder.svg?height=600&width=800", alt: "Tournament Final", category: "Tournaments" },
-    { src: "/placeholder.svg?height=800&width=600", alt: "Junior Training", category: "Training" },
-    { src: "/placeholder.svg?height=600&width=600", alt: "Clay Courts", category: "Facilities" },
-    { src: "/placeholder.svg?height=600&width=800", alt: "Awards Ceremony", category: "Events" },
-    { src: "/placeholder.svg?height=800&width=600", alt: "Coach Stephen", category: "Coaches" },
-    { src: "/placeholder.svg?height=600&width=600", alt: "New Gym Equipment", category: "Facilities" },
-    { src: "/placeholder.svg?height=600&width=800", alt: "Summer Camp Group", category: "Camps" },
-    { src: "/placeholder.svg?height=800&width=600", alt: "Action Shot", category: "Tournaments" },
-    { src: "/placeholder.svg?height=600&width=600", alt: "Sunset Courts", category: "Facilities" },
-  ];
-
   const [filter, setFilter] = useState("All");
-  const categories = ["All", "Tournaments", "Training", "Facilities", "Events", "Coaches", "Camps"];
 
-  const filteredImages = filter === "All" ? images : images.filter(img => img.category === filter);
+  // Performance: Memoized filtered results to prevent redundant filtering calculations
+  // on every render when the filter state remains unchanged.
+  const filteredImages = useMemo(() => {
+    return filter === "All" ? IMAGES : IMAGES.filter(img => img.category === filter);
+  }, [filter]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -36,7 +43,7 @@ export default function GalleryPage() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-                {categories.map((category) => (
+                {CATEGORIES.map((category) => (
                     <button
                         key={category}
                         onClick={() => setFilter(category)}
