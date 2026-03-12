@@ -88,7 +88,9 @@ ${colorConfig
     const color =
       itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
       itemConfig.color
-    return color ? `  --color-${key}: ${color};` : null
+    // 🛡️ Sentinel: Sanitize color variables to prevent CSS injection XSS
+    const sanitizedColor = color?.replace(/['";{}<>]/g, "")
+    return sanitizedColor ? `  --color-${key}: ${sanitizedColor};` : null
   })
   .join("\n")}
 }
