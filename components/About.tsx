@@ -31,7 +31,7 @@ const About = () => {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <button className="bg-white/90 rounded-full p-4 shadow-lg hover:bg-white transition-colors">
+                  <button aria-label="Play video" className="bg-white/90 rounded-full p-4 shadow-lg hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2">
                     <svg className="w-8 h-8 text-teal-900" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                     </svg>
