@@ -54,7 +54,7 @@ const Programs = () => {
                             <p className="text-gray-600">{program.description}</p>
                        </CardContent>
                        <CardFooter>
-                         <Button variant="link" className="p-0 text-teal-600 hover:text-teal-800 font-semibold group-hover:underline">
+                         <Button asChild variant="link" className="p-0 text-teal-600 hover:text-teal-800 font-semibold group-hover:underline">
                             <Link href={`/programs/${program.title.toLowerCase()}`} className="flex items-center">
                                 Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Link>
@@ -65,7 +65,7 @@ const Programs = () => {
                  </div>
        
                  <div className="text-center mt-12">
-                   <Button variant="outline" size="lg" className="border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-white transition-colors">
+                   <Button asChild variant="outline" size="lg" className="border-teal-900 text-teal-900 hover:bg-teal-900 hover:text-white transition-colors">
                         <Link href="/programs" className="flex items-center">
                             View All Programs <ChevronRight className="h-4 w-4 ml-2" />
                         </Link>
