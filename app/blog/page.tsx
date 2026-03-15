@@ -9,41 +9,43 @@ import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Calendar, User } from "lucide-react"
 
+// BOLT OPTIMIZATION: Hoisted static array outside component to prevent unnecessary memory allocation on every render.
+const posts = [
+  {
+    title: "5 Tips to Improve Your Serve",
+    date: "April 10, 2024",
+    author: "Craig Peel",
+    excerpt: "The serve is the most important shot in tennis. Here are 5 simple tips to add power and consistency to your serve.",
+    image: "/placeholder.svg?height=300&width=500",
+    slug: "improve-your-serve"
+  },
+  {
+    title: "Nutrition for Tennis Players",
+    date: "March 25, 2024",
+    author: "Emily Rodriguez",
+    excerpt: "Fueling your body correctly can make a huge difference in your performance on the court. Learn what to eat before, during, and after a match.",
+    image: "/placeholder.svg?height=300&width=500",
+    slug: "nutrition-tips"
+  },
+  {
+    title: "Choosing the Right Racquet",
+    date: "March 15, 2024",
+    author: "Stephen Powell",
+    excerpt: "With so many options on the market, finding the right racquet can be overwhelming. We break down the key factors to consider.",
+    image: "/placeholder.svg?height=300&width=500",
+    slug: "choosing-racquet"
+  },
+  {
+    title: "Mental Toughness: The Key to Winning",
+    date: "February 28, 2024",
+    author: "Dr. Sarah Miller",
+    excerpt: "Tennis is as much a mental game as it is physical. Discover techniques to stay focused and resilient under pressure.",
+    image: "/placeholder.svg?height=300&width=500",
+    slug: "mental-toughness"
+  }
+];
+
 export default function BlogPage() {
-  const posts = [
-    {
-      title: "5 Tips to Improve Your Serve",
-      date: "April 10, 2024",
-      author: "Craig Peel",
-      excerpt: "The serve is the most important shot in tennis. Here are 5 simple tips to add power and consistency to your serve.",
-      image: "/placeholder.svg?height=300&width=500",
-      slug: "improve-your-serve"
-    },
-    {
-      title: "Nutrition for Tennis Players",
-      date: "March 25, 2024",
-      author: "Emily Rodriguez",
-      excerpt: "Fueling your body correctly can make a huge difference in your performance on the court. Learn what to eat before, during, and after a match.",
-      image: "/placeholder.svg?height=300&width=500",
-      slug: "nutrition-tips"
-    },
-    {
-      title: "Choosing the Right Racquet",
-      date: "March 15, 2024",
-      author: "Stephen Powell",
-      excerpt: "With so many options on the market, finding the right racquet can be overwhelming. We break down the key factors to consider.",
-      image: "/placeholder.svg?height=300&width=500",
-      slug: "choosing-racquet"
-    },
-    {
-      title: "Mental Toughness: The Key to Winning",
-      date: "February 28, 2024",
-      author: "Dr. Sarah Miller",
-      excerpt: "Tennis is as much a mental game as it is physical. Discover techniques to stay focused and resilient under pressure.",
-      image: "/placeholder.svg?height=300&width=500",
-      slug: "mental-toughness"
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">

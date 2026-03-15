@@ -7,45 +7,47 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { BookingModal } from "@/components/BookingModal"
 
+// BOLT OPTIMIZATION: Hoisted static array outside component to prevent unnecessary memory allocation on every render.
+const facilities = [
+  {
+    title: "Clay Courts",
+    description: "Our 9 championship-standard clay courts are meticulously maintained to ensure the best playing surface. The soft surface reduces impact on joints and allows for longer rallies.",
+    features: ["Floodlights", "Ball Machines", "Sitting Area"],
+    image: "/placeholder.svg?height=400&width=600"
+  },
+  {
+    title: "Hard Courts",
+    description: "Experience the speed and consistency of our 4 Plexicushion hard courts. Perfect for players who prefer a faster game and true bounces.",
+    features: ["Standard Dimensions", "Anti-glare surface", "Spectator Seating"],
+    image: "/placeholder.svg?height=400&width=600"
+  },
+  {
+    title: "Fitness Center",
+    description: "A fully equipped gym with cardio machines, free weights, and resistance training equipment designed specifically for tennis players' conditioning.",
+    features: ["Personal Trainers", "Yoga Studio", "Recovery Zone"],
+    image: "/placeholder.svg?height=400&width=600"
+  },
+  {
+    title: "Clubhouse",
+    description: "Relax and socialize in our modern clubhouse. Enjoy a meal at the cafe, watch matches on big screens, or shop at the pro shop.",
+    features: ["Pro Shop", "Cafe & Bar", "Locker Rooms"],
+    image: "/placeholder.svg?height=400&width=600"
+  },
+  {
+    title: "Swimming Pool",
+    description: "Cool off after a match in our Olympic-sized swimming pool. Also available for aquatic fitness classes and leisure swimming.",
+    features: ["Heated", "Lap Lanes", "Kids Area"],
+    image: "/placeholder.svg?height=400&width=600"
+  },
+  {
+    title: "Accommodation",
+    description: "On-site accommodation for visiting players and camp participants. Comfortable rooms with all necessary amenities.",
+    features: ["Wi-Fi", "Study Areas", "Laundry"],
+    image: "/placeholder.svg?height=400&width=600"
+  }
+];
+
 export default function FacilitiesPage() {
-  const facilities = [
-    {
-      title: "Clay Courts",
-      description: "Our 9 championship-standard clay courts are meticulously maintained to ensure the best playing surface. The soft surface reduces impact on joints and allows for longer rallies.",
-      features: ["Floodlights", "Ball Machines", "Sitting Area"],
-      image: "/placeholder.svg?height=400&width=600"
-    },
-    {
-      title: "Hard Courts",
-      description: "Experience the speed and consistency of our 4 Plexicushion hard courts. Perfect for players who prefer a faster game and true bounces.",
-      features: ["Standard Dimensions", "Anti-glare surface", "Spectator Seating"],
-      image: "/placeholder.svg?height=400&width=600"
-    },
-    {
-      title: "Fitness Center",
-      description: "A fully equipped gym with cardio machines, free weights, and resistance training equipment designed specifically for tennis players' conditioning.",
-      features: ["Personal Trainers", "Yoga Studio", "Recovery Zone"],
-      image: "/placeholder.svg?height=400&width=600"
-    },
-    {
-      title: "Clubhouse",
-      description: "Relax and socialize in our modern clubhouse. Enjoy a meal at the cafe, watch matches on big screens, or shop at the pro shop.",
-      features: ["Pro Shop", "Cafe & Bar", "Locker Rooms"],
-      image: "/placeholder.svg?height=400&width=600"
-    },
-    {
-      title: "Swimming Pool",
-      description: "Cool off after a match in our Olympic-sized swimming pool. Also available for aquatic fitness classes and leisure swimming.",
-      features: ["Heated", "Lap Lanes", "Kids Area"],
-      image: "/placeholder.svg?height=400&width=600"
-    },
-    {
-      title: "Accommodation",
-      description: "On-site accommodation for visiting players and camp participants. Comfortable rooms with all necessary amenities.",
-      features: ["Wi-Fi", "Study Areas", "Laundry"],
-      image: "/placeholder.svg?height=400&width=600"
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">

@@ -9,45 +9,47 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { BookingModal } from "@/components/BookingModal"
 
+// BOLT OPTIMIZATION: Hoisted static array outside component to prevent unnecessary memory allocation on every render.
+const coaches = [
+  {
+    name: "Craig Peel",
+    title: "Director of Tennis",
+    bio: "Former ATP player with over 20 years of coaching experience. Craig has developed numerous national champions and specializes in high-performance strategy.",
+    image: "/placeholder.svg?height=400&width=400"
+  },
+  {
+    name: "Stephen Powell",
+    title: "Head Coach",
+    bio: "Certified PTR Professional with a focus on junior development. Stephen is known for his energetic coaching style and technical expertise.",
+    image: "/placeholder.svg?height=400&width=400"
+  },
+  {
+    name: "Matthew Paulson",
+    title: "Performance Coach",
+    bio: "Specialist in biomechanics and physical conditioning. Matthew helps players optimize their movement and prevent injuries.",
+    image: "/placeholder.svg?height=400&width=400"
+  },
+  {
+    name: "Sarah Jenkins",
+    title: "Senior Coach",
+    bio: "Former collegiate player with a passion for teaching beginners and intermediate players. Sarah focuses on building a strong foundation.",
+    image: "/placeholder.svg?height=400&width=400"
+  },
+  {
+    name: "David Chen",
+    title: "Assistant Coach",
+    bio: "David brings a fresh perspective to our coaching team. He works primarily with our junior academy and summer camps.",
+    image: "/placeholder.svg?height=400&width=400"
+  },
+  {
+    name: "Emily Rodriguez",
+    title: "Fitness Trainer",
+    bio: "Certified strength and conditioning specialist. Emily designs personalized fitness programs to enhance on-court performance.",
+    image: "/placeholder.svg?height=400&width=400"
+  }
+];
+
 export default function CoachesPage() {
-  const coaches = [
-    {
-      name: "Craig Peel",
-      title: "Director of Tennis",
-      bio: "Former ATP player with over 20 years of coaching experience. Craig has developed numerous national champions and specializes in high-performance strategy.",
-      image: "/placeholder.svg?height=400&width=400"
-    },
-    {
-      name: "Stephen Powell",
-      title: "Head Coach",
-      bio: "Certified PTR Professional with a focus on junior development. Stephen is known for his energetic coaching style and technical expertise.",
-      image: "/placeholder.svg?height=400&width=400"
-    },
-    {
-      name: "Matthew Paulson",
-      title: "Performance Coach",
-      bio: "Specialist in biomechanics and physical conditioning. Matthew helps players optimize their movement and prevent injuries.",
-      image: "/placeholder.svg?height=400&width=400"
-    },
-    {
-      name: "Sarah Jenkins",
-      title: "Senior Coach",
-      bio: "Former collegiate player with a passion for teaching beginners and intermediate players. Sarah focuses on building a strong foundation.",
-      image: "/placeholder.svg?height=400&width=400"
-    },
-    {
-      name: "David Chen",
-      title: "Assistant Coach",
-      bio: "David brings a fresh perspective to our coaching team. He works primarily with our junior academy and summer camps.",
-      image: "/placeholder.svg?height=400&width=400"
-    },
-    {
-      name: "Emily Rodriguez",
-      title: "Fitness Trainer",
-      bio: "Certified strength and conditioning specialist. Emily designs personalized fitness programs to enhance on-court performance.",
-      image: "/placeholder.svg?height=400&width=400"
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">
