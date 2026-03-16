@@ -9,8 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Calendar, User } from "lucide-react"
 
-export default function BlogPage() {
-  const posts = [
+const posts = [
     {
       title: "5 Tips to Improve Your Serve",
       date: "April 10, 2024",
@@ -44,6 +43,8 @@ export default function BlogPage() {
       slug: "mental-toughness"
     }
   ];
+
+export default function BlogPage() {
 
   return (
     <div className="min-h-screen flex flex-col">

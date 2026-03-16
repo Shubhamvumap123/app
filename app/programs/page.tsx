@@ -8,8 +8,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button"
 import { BookingModal } from "@/components/BookingModal"
 
-export default function ProgramsPage() {
-  const programs = [
+const programs = [
     {
       title: "Junior Academy",
       description: "Comprehensive training for young players aged 5-18. Focus on fundamentals, strategy, and match play.",
@@ -59,6 +58,8 @@ export default function ProgramsPage() {
       image: "/placeholder.svg?height=300&width=400"
     },
   ];
+
+export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen flex flex-col">

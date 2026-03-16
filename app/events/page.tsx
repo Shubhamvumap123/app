@@ -9,8 +9,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Calendar, Clock, MapPin } from "lucide-react"
 import { BookingModal } from "@/components/BookingModal"
 
-export default function EventsPage() {
-  const events = [
+const events = [
     {
       title: "Spring Junior Open",
       date: "May 15-17, 2024",
@@ -44,6 +43,8 @@ export default function EventsPage() {
       image: "/placeholder.svg?height=300&width=500"
     }
   ];
+
+export default function EventsPage() {
 
   return (
     <div className="min-h-screen flex flex-col">

@@ -7,8 +7,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { BookingModal } from "@/components/BookingModal"
 
-export default function FacilitiesPage() {
-  const facilities = [
+const facilities = [
     {
       title: "Clay Courts",
       description: "Our 9 championship-standard clay courts are meticulously maintained to ensure the best playing surface. The soft surface reduces impact on joints and allows for longer rallies.",
@@ -46,6 +45,8 @@ export default function FacilitiesPage() {
       image: "/placeholder.svg?height=400&width=600"
     }
   ];
+
+export default function FacilitiesPage() {
 
   return (
     <div className="min-h-screen flex flex-col">

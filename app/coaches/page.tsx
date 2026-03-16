@@ -9,8 +9,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { BookingModal } from "@/components/BookingModal"
 
-export default function CoachesPage() {
-  const coaches = [
+const coaches = [
     {
       name: "Craig Peel",
       title: "Director of Tennis",
@@ -48,6 +47,8 @@ export default function CoachesPage() {
       image: "/placeholder.svg?height=400&width=400"
     }
   ];
+
+export default function CoachesPage() {
 
   return (
     <div className="min-h-screen flex flex-col">

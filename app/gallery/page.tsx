@@ -1,13 +1,12 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Header from "@/components/header"
 import Footer from "@/components/Footer"
 import Image from "next/image"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 
-export default function GalleryPage() {
-  const images = [
+const images = [
     { src: "/placeholder.svg?height=600&width=800", alt: "Tournament Final", category: "Tournaments" },
     { src: "/placeholder.svg?height=800&width=600", alt: "Junior Training", category: "Training" },
     { src: "/placeholder.svg?height=600&width=600", alt: "Clay Courts", category: "Facilities" },
@@ -19,10 +18,13 @@ export default function GalleryPage() {
     { src: "/placeholder.svg?height=600&width=600", alt: "Sunset Courts", category: "Facilities" },
   ];
 
-  const [filter, setFilter] = useState("All");
-  const categories = ["All", "Tournaments", "Training", "Facilities", "Events", "Coaches", "Camps"];
+const categories = ["All", "Tournaments", "Training", "Facilities", "Events", "Coaches", "Camps"];
 
-  const filteredImages = filter === "All" ? images : images.filter(img => img.category === filter);
+export default function GalleryPage() {
+
+  const [filter, setFilter] = useState("All");
+
+  const filteredImages = useMemo(() => filter === "All" ? images : images.filter(img => img.category === filter), [filter]);
 
   return (
     <div className="min-h-screen flex flex-col">
