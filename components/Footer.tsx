@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Facebook, Twitter, Instagram, Youtube, Send } from "lucide-react"
+import { toast } from "sonner"
 
 const Footer = () => {
     return (
@@ -87,9 +88,15 @@ const Footer = () => {
               <p className="text-teal-100 text-sm mb-4">
                 Subscribe to our newsletter for the latest updates, tips, and events.
               </p>
-              <form className="flex flex-col gap-2" onSubmit={(e) => { e.preventDefault(); alert("Subscribed!"); }}>
+              <form className="flex flex-col gap-2" onSubmit={(e) => {
+                e.preventDefault();
+                toast.success("Subscribed successfully!");
+                e.currentTarget.reset();
+              }}>
                 <Input
                     type="email"
+                    required
+                    aria-label="Your email address"
                     placeholder="Your email address"
                     className="bg-teal-900 border-teal-800 text-white placeholder:text-teal-400 focus-visible:ring-teal-500"
                 />
