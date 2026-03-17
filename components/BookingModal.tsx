@@ -77,6 +77,7 @@ export function BookingModal({
                   key={time}
                   variant={selectedTime === time ? "default" : "outline"}
                   size="sm"
+                  aria-pressed={selectedTime === time}
                   onClick={() => setSelectedTime(time)}
                   className={cn(
                     "text-xs",
