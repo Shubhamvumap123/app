@@ -44,6 +44,7 @@ export default function GalleryPage() {
                     <button
                         key={category}
                         onClick={() => setFilter(category)}
+                        aria-pressed={filter === category}
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                             filter === category
                                 ? "bg-teal-600 text-white"
