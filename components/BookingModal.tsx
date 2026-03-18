@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { Loader2 } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -28,6 +29,7 @@ export function BookingModal({
   const [date, setDate] = useState<Date | undefined>(new Date())
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
+  const [isBooking, setIsBooking] = useState(false)
 
   const timeSlots = [
     "09:00 AM",
@@ -41,9 +43,12 @@ export function BookingModal({
     "05:00 PM",
   ]
 
-  const handleBook = () => {
+  const handleBook = async () => {
     if (date && selectedTime) {
+      setIsBooking(true);
+      await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success(`${title} successful for ${date.toDateString()} at ${selectedTime}`);
+      setIsBooking(false);
       setIsOpen(false);
       setSelectedTime(null);
     }
@@ -79,6 +84,7 @@ export function BookingModal({
                   size="sm"
                   aria-pressed={selectedTime === time}
                   onClick={() => setSelectedTime(time)}
+                  aria-pressed={selectedTime === time}
                   className={cn(
                     "text-xs",
                     selectedTime === time && "bg-teal-600 hover:bg-teal-700"
@@ -93,10 +99,17 @@ export function BookingModal({
         <div className="flex justify-end">
           <Button
             onClick={handleBook}
-            disabled={!date || !selectedTime}
+            disabled={!date || !selectedTime || isBooking}
             className="bg-teal-600 hover:bg-teal-700 text-white"
           >
-            Confirm
+            {isBooking ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Booking...
+              </>
+            ) : (
+              "Confirm"
+            )}
           </Button>
         </div>
       </DialogContent>
