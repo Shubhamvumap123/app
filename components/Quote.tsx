@@ -1,29 +1,33 @@
-"use client"
-
 import React from 'react';
 import { Quote as QuoteIcon } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import { Card, CardContent } from "@/components/ui/card"
 
-const Quote = () => {
-    const testimonials = [
-        {
-            text: "We have created an environment ideal for learning craft. Our goal is to be recognized as the premier tennis academy in the region.",
-            author: "Craig Peel",
-            role: "Director"
-        },
-        {
-            text: "Southern Slam Academy transformed my game. The coaches are top-notch and the facilities are amazing.",
-            author: "Sarah Johnson",
-            role: "Academy Student"
-        },
-        {
-            text: "The best place to learn tennis in the city. Highly recommended for kids and adults alike.",
-            author: "Michael Chen",
-            role: "Parent"
-        }
-    ]
+interface Testimonial {
+    text: string;
+    author: string;
+    role: string;
+}
 
+const testimonialsData: Testimonial[] = [
+    {
+        text: "We have created an environment ideal for learning craft. Our goal is to be recognized as the premier tennis academy in the region.",
+        author: "Craig Peel",
+        role: "Director"
+    },
+    {
+        text: "Southern Slam Academy transformed my game. The coaches are top-notch and the facilities are amazing.",
+        author: "Sarah Johnson",
+        role: "Academy Student"
+    },
+    {
+        text: "The best place to learn tennis in the city. Highly recommended for kids and adults alike.",
+        author: "Michael Chen",
+        role: "Parent"
+    }
+];
+
+const Quote = () => {
     return (
         <section className="py-24 bg-teal-900 text-white overflow-hidden">
         <div className="container mx-auto px-4">
@@ -32,7 +36,7 @@ const Quote = () => {
             </div>
             <Carousel className="w-full max-w-4xl mx-auto" opts={{ loop: true }}>
                 <CarouselContent>
-                    {testimonials.map((testimonial, index) => (
+                    {testimonialsData.map((testimonial, index) => (
                         <CarouselItem key={index}>
                              <div className="p-1">
                                 <Card className="bg-transparent border-none shadow-none">
