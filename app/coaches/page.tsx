@@ -9,8 +9,11 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { BookingModal } from "@/components/BookingModal"
 
-export default function CoachesPage() {
-  const coaches = [
+// Optimization: Hoisting static 'COACHES' array outside the component scope
+// prevents the array from being re-allocated on every render cycle.
+// This reduces garbage collection overhead and improves rendering performance
+// for the static coach list, achieving O(1) allocation instead of O(n) per render.
+const COACHES = [
     {
       name: "Craig Peel",
       title: "Director of Tennis",
@@ -49,6 +52,7 @@ export default function CoachesPage() {
     }
   ];
 
+export default function CoachesPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header forceScrolled={true} />
@@ -63,7 +67,7 @@ export default function CoachesPage() {
 
         <section className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {coaches.map((coach, index) => (
+                {COACHES.map((coach, index) => (
                     <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1 overflow-hidden flex flex-col items-center p-6 text-center">
                         <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-teal-100 mb-6 relative shadow-md">
                              <Image
