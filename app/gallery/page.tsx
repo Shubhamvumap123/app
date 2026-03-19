@@ -45,7 +45,7 @@ export default function GalleryPage() {
                         key={category}
                         onClick={() => setFilter(category)}
                         aria-pressed={filter === category}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 ${
                             filter === category
                                 ? "bg-teal-600 text-white"
                                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -62,7 +62,7 @@ export default function GalleryPage() {
                 {filteredImages.map((image, index) => (
                     <Dialog key={index}>
                         <DialogTrigger asChild>
-                            <div className="relative group overflow-hidden rounded-lg cursor-pointer shadow-md hover:shadow-xl transition-all duration-300">
+                            <button className="block w-full h-full text-left relative group overflow-hidden rounded-lg cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2">
                                 <Image
                                     src={image.src || "/placeholder.svg"}
                                     alt={image.alt}
@@ -73,7 +73,7 @@ export default function GalleryPage() {
                                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                     <span className="text-white font-semibold text-lg">{image.alt}</span>
                                 </div>
-                            </div>
+                            </button>
                         </DialogTrigger>
                         <DialogContent className="max-w-4xl bg-transparent border-none p-0 shadow-none">
                              <div className="relative w-full h-[80vh]">
