@@ -9,42 +9,46 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Calendar, Clock, MapPin } from "lucide-react"
 import { BookingModal } from "@/components/BookingModal"
 
-export default function EventsPage() {
-  const events = [
-    {
-      title: "Spring Junior Open",
-      date: "May 15-17, 2024",
-      time: "8:00 AM - 6:00 PM",
-      location: "Main Courts",
-      description: "A USTA sanctioned tournament for junior players. Singles and doubles draws available.",
-      image: "/placeholder.svg?height=300&width=500"
-    },
-    {
-      title: "Charity Pro-Am",
-      date: "June 5, 2024",
-      time: "10:00 AM - 4:00 PM",
-      location: "Center Court",
-      description: "Play alongside the pros and raise money for a good cause. Includes lunch and silent auction.",
-      image: "/placeholder.svg?height=300&width=500"
-    },
-    {
-      title: "Summer Camp Week 1",
-      date: "July 8-12, 2024",
-      time: "9:00 AM - 3:00 PM",
-      location: "All Courts",
-      description: "Kick off the summer with our intensive training camp. Open to ages 6-14.",
-      image: "/placeholder.svg?height=300&width=500"
-    },
-    {
-      title: "Member Social Mixer",
-      date: "July 20, 2024",
-      time: "6:00 PM - 9:00 PM",
-      location: "Clubhouse",
-      description: "Enjoy an evening of casual tennis, food, and drinks with fellow members.",
-      image: "/placeholder.svg?height=300&width=500"
-    }
-  ];
+// Optimization: Hoisting static 'events' array outside the component scope
+// prevents the array from being re-allocated on every render cycle.
+// This reduces garbage collection overhead and improves rendering performance
+// for the static event list, achieving O(1) allocation instead of O(n) per render.
+const events = [
+  {
+    title: "Spring Junior Open",
+    date: "May 15-17, 2024",
+    time: "8:00 AM - 6:00 PM",
+    location: "Main Courts",
+    description: "A USTA sanctioned tournament for junior players. Singles and doubles draws available.",
+    image: "/placeholder.svg?height=300&width=500"
+  },
+  {
+    title: "Charity Pro-Am",
+    date: "June 5, 2024",
+    time: "10:00 AM - 4:00 PM",
+    location: "Center Court",
+    description: "Play alongside the pros and raise money for a good cause. Includes lunch and silent auction.",
+    image: "/placeholder.svg?height=300&width=500"
+  },
+  {
+    title: "Summer Camp Week 1",
+    date: "July 8-12, 2024",
+    time: "9:00 AM - 3:00 PM",
+    location: "All Courts",
+    description: "Kick off the summer with our intensive training camp. Open to ages 6-14.",
+    image: "/placeholder.svg?height=300&width=500"
+  },
+  {
+    title: "Member Social Mixer",
+    date: "July 20, 2024",
+    time: "6:00 PM - 9:00 PM",
+    location: "Clubhouse",
+    description: "Enjoy an evening of casual tennis, food, and drinks with fellow members.",
+    image: "/placeholder.svg?height=300&width=500"
+  }
+];
 
+export default function EventsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header forceScrolled={true} />
