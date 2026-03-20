@@ -90,7 +90,7 @@ export default function BlogPage() {
                             <p className="text-gray-600 line-clamp-3">{post.excerpt}</p>
                         </CardContent>
                         <CardFooter>
-                            <Button variant="link" className="p-0 text-teal-600 hover:text-teal-800 font-semibold">
+                            <Button asChild variant="link" className="p-0 text-teal-600 hover:text-teal-800 font-semibold">
                                 <Link href={`/blog/${post.slug}`}>Read More</Link>
                             </Button>
                         </CardFooter>

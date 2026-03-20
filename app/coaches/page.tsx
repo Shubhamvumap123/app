@@ -96,11 +96,11 @@ export default function CoachesPage() {
                 <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
                     Are you a passionate tennis professional looking to make a difference? We are always looking for talented coaches to join our academy.
                 </p>
-                <Link href="/#contact">
-                    <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
+                <Button asChild size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
+                    <Link href="/#contact">
                         Careers at SSA
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </div>
         </section>
       </main>
