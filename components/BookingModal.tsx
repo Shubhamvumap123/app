@@ -21,6 +21,20 @@ interface BookingModalProps {
   description?: string;
 }
 
+// Optimization: Hoisting static array outside the component scope
+// prevents it from being re-allocated on every render cycle.
+const timeSlots = [
+  "09:00 AM",
+  "10:00 AM",
+  "11:00 AM",
+  "12:00 PM",
+  "01:00 PM",
+  "02:00 PM",
+  "03:00 PM",
+  "04:00 PM",
+  "05:00 PM",
+]
+
 export function BookingModal({
   children,
   title = "Book a Court",
@@ -30,18 +44,6 @@ export function BookingModal({
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [isBooking, setIsBooking] = useState(false)
-
-  const timeSlots = [
-    "09:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "01:00 PM",
-    "02:00 PM",
-    "03:00 PM",
-    "04:00 PM",
-    "05:00 PM",
-  ]
 
   const handleBook = async () => {
     if (date && selectedTime) {

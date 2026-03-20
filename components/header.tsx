@@ -13,6 +13,10 @@ interface HeaderProps {
     forceScrolled?: boolean;
 }
 
+// Optimization: Hoisting static array outside the component scope
+// prevents it from being re-allocated on every render cycle.
+const navItems = ["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog"]
+
 const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -38,8 +42,6 @@ const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
   }, [])
 
   const effectiveScrolled = forceScrolled || isScrolled;
-
-  const navItems = ["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog"]
 
   return (
     <header
