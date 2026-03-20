@@ -49,7 +49,7 @@ const Coaches = () => {
                 </div>
       
                 <div className="text-center mt-12">
-                   <Button variant="link" size="lg" className="text-teal-900 hover:text-teal-700">
+                   <Button asChild variant="link" size="lg" className="text-teal-900 hover:text-teal-700">
                         <Link href="/coaches" className="flex items-center text-lg">
                             View All Coaches <ChevronRight className="h-5 w-5 ml-2" />
                         </Link>
