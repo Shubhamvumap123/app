@@ -8,58 +8,62 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button"
 import { BookingModal } from "@/components/BookingModal"
 
-export default function ProgramsPage() {
-  const programs = [
-    {
-      title: "Junior Academy",
-      description: "Comprehensive training for young players aged 5-18. Focus on fundamentals, strategy, and match play.",
-      level: "Beginner to Advanced",
-      schedule: "Mon-Fri, 4:00 PM - 6:00 PM",
-      price: "$200/month",
-      image: "/placeholder.svg?height=300&width=400"
-    },
-    {
-      title: "Adult Clinics",
-      description: "Evening sessions for adults looking to learn or improve. Social and competitive options available.",
-      level: "All Levels",
-      schedule: "Tue & Thu, 7:00 PM - 8:30 PM",
-      price: "$150/month",
-      image: "/placeholder.svg?height=300&width=400"
-    },
-    {
-      title: "High Performance",
-      description: "Intensive program for tournament players. Includes fitness training, video analysis, and tournament travel support.",
-      level: "Advanced",
-      schedule: "Mon-Fri, 2:00 PM - 5:00 PM",
-      price: "$400/month",
-      image: "/placeholder.svg?height=300&width=400"
-    },
-    {
-      title: "Private Lessons",
-      description: "One-on-one coaching tailored to your specific needs. The fastest way to improve your technique.",
-      level: "All Levels",
-      schedule: "Flexible",
-      price: "$80/hour",
-      image: "/placeholder.svg?height=300&width=400"
-    },
-     {
-      title: "Summer Camps",
-      description: "Weekly camps during school breaks. Fun, games, and intensive skill development for kids.",
-      level: "Ages 6-14",
-      schedule: "Mon-Fri, 9:00 AM - 3:00 PM",
-      price: "$300/week",
-      image: "/placeholder.svg?height=300&width=400"
-    },
-     {
-      title: "Cardio Tennis",
-      description: "High-energy fitness activity that combines the best features of the sport of tennis with cardiovascular exercise.",
-      level: "All Levels",
-      schedule: "Sat, 9:00 AM - 10:00 AM",
-      price: "$20/session",
-      image: "/placeholder.svg?height=300&width=400"
-    },
-  ];
+// Optimization: Hoisting static 'programs' array outside the component scope
+// prevents the array from being re-allocated on every render cycle.
+// This reduces garbage collection overhead and improves rendering performance
+// for the static program list, achieving O(1) allocation instead of O(n) per render.
+const programs = [
+  {
+    title: "Junior Academy",
+    description: "Comprehensive training for young players aged 5-18. Focus on fundamentals, strategy, and match play.",
+    level: "Beginner to Advanced",
+    schedule: "Mon-Fri, 4:00 PM - 6:00 PM",
+    price: "$200/month",
+    image: "/placeholder.svg?height=300&width=400"
+  },
+  {
+    title: "Adult Clinics",
+    description: "Evening sessions for adults looking to learn or improve. Social and competitive options available.",
+    level: "All Levels",
+    schedule: "Tue & Thu, 7:00 PM - 8:30 PM",
+    price: "$150/month",
+    image: "/placeholder.svg?height=300&width=400"
+  },
+  {
+    title: "High Performance",
+    description: "Intensive program for tournament players. Includes fitness training, video analysis, and tournament travel support.",
+    level: "Advanced",
+    schedule: "Mon-Fri, 2:00 PM - 5:00 PM",
+    price: "$400/month",
+    image: "/placeholder.svg?height=300&width=400"
+  },
+  {
+    title: "Private Lessons",
+    description: "One-on-one coaching tailored to your specific needs. The fastest way to improve your technique.",
+    level: "All Levels",
+    schedule: "Flexible",
+    price: "$80/hour",
+    image: "/placeholder.svg?height=300&width=400"
+  },
+   {
+    title: "Summer Camps",
+    description: "Weekly camps during school breaks. Fun, games, and intensive skill development for kids.",
+    level: "Ages 6-14",
+    schedule: "Mon-Fri, 9:00 AM - 3:00 PM",
+    price: "$300/week",
+    image: "/placeholder.svg?height=300&width=400"
+  },
+   {
+    title: "Cardio Tennis",
+    description: "High-energy fitness activity that combines the best features of the sport of tennis with cardiovascular exercise.",
+    level: "All Levels",
+    schedule: "Sat, 9:00 AM - 10:00 AM",
+    price: "$20/session",
+    image: "/placeholder.svg?height=300&width=400"
+  },
+];
 
+export default function ProgramsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header forceScrolled={true} />
