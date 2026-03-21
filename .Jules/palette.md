@@ -1,3 +1,3 @@
-## 2025-02-17 - Required Form Fields Pattern
-**Learning:** Found that required form fields in the app lack visual indicators (`*`) even when `required` is present on the input. This is confusing for users trying to figure out which fields are mandatory before submitting.
-**Action:** Always ensure that when `required` is used on an input, the corresponding label includes a visual indicator (like a red asterisk with `aria-hidden="true"`) and the input has `aria-required="true"` to explicitly announce it to screen readers.
+## 2024-03-21 - Accessible Lightbox Modals
+**Learning:** The image gallery lightbox pattern using shadcn/ui `Dialog` components causes an accessibility violation by omitting the required `<DialogTitle>`. Because the visual design relies on minimal layout without a textual title, screen reader users do not receive an accessible name announcement when the image modal opens.
+**Action:** Always include a visually hidden `<DialogTitle>` and `<DialogDescription>` wrapped in a container with the `sr-only` class when using Radix UI/shadcn `DialogContent` for image lightboxes or other minimalist modals.
