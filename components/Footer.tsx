@@ -94,6 +94,7 @@ const Footer = () => {
                     aria-label="Your email address"
                     placeholder="Your email address"
                     className="bg-teal-900 border-teal-800 text-white placeholder:text-teal-400 focus-visible:ring-teal-500"
+                    maxLength={100}
                 />
                 <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold">
                     Subscribe <Send className="ml-2 h-4 w-4" />

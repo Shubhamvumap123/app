@@ -89,26 +89,26 @@ const Contact = () => {
                                     <label htmlFor="name" className="text-sm font-medium">
                                         Name <span className="text-red-500" aria-hidden="true">*</span>
                                     </label>
-                                    <Input id="name" placeholder="John Doe" value={formData.name} onChange={handleChange} required aria-required="true" />
+                                    <Input id="name" placeholder="John Doe" value={formData.name} onChange={handleChange} required aria-required="true" maxLength={100} />
                                 </div>
                                 <div className="space-y-2">
                                     <label htmlFor="email" className="text-sm font-medium">
                                         Email <span className="text-red-500" aria-hidden="true">*</span>
                                     </label>
-                                    <Input id="email" type="email" placeholder="john@example.com" value={formData.email} onChange={handleChange} required aria-required="true" />
+                                    <Input id="email" type="email" placeholder="john@example.com" value={formData.email} onChange={handleChange} required aria-required="true" maxLength={100} />
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="subject" className="text-sm font-medium">
                                     Subject <span className="text-red-500" aria-hidden="true">*</span>
                                 </label>
-                                <Input id="subject" placeholder="Program Inquiry" value={formData.subject} onChange={handleChange} required aria-required="true" />
+                                <Input id="subject" placeholder="Program Inquiry" value={formData.subject} onChange={handleChange} required aria-required="true" maxLength={150} />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="message" className="text-sm font-medium">
                                     Message <span className="text-red-500" aria-hidden="true">*</span>
                                 </label>
-                                <Textarea id="message" placeholder="How can we help you?" className="min-h-[120px]" value={formData.message} onChange={handleChange} required aria-required="true" />
+                                <Textarea id="message" placeholder="How can we help you?" className="min-h-[120px]" value={formData.message} onChange={handleChange} required aria-required="true" maxLength={1000} />
                             </div>
                             <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold" disabled={loading}>
                                 {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</> : "Send Message"}
