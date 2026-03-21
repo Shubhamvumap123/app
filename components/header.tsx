@@ -13,6 +13,12 @@ interface HeaderProps {
     forceScrolled?: boolean;
 }
 
+// ⚡ Bolt Performance Optimization: Hoisted static array
+// What: Moved `navItems` array outside of the component definition.
+// Why: Static data defined inside a component is re-allocated in memory on every render.
+// Impact: Prevents unnecessary memory garbage collection cycles and potential re-renders if passed as props.
+const navItems = ["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog"]
+
 const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -38,8 +44,6 @@ const Header: React.FC<HeaderProps> = ({ forceScrolled = false }) => {
   }, [])
 
   const effectiveScrolled = forceScrolled || isScrolled;
-
-  const navItems = ["Home", "About", "Programs", "Facilities", "Coaches", "Events", "Gallery", "Blog"]
 
   return (
     <header
