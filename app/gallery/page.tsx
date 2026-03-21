@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Header from "@/components/header"
 import Footer from "@/components/Footer"
 import Image from "next/image"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription, DialogHeader } from "@/components/ui/dialog"
 
 const images = [
   { src: "/placeholder.svg?height=600&width=800", alt: "Tournament Final", category: "Tournaments" },
@@ -76,6 +76,12 @@ export default function GalleryPage() {
                             </button>
                         </DialogTrigger>
                         <DialogContent className="max-w-4xl bg-transparent border-none p-0 shadow-none">
+                             <DialogHeader className="sr-only">
+                                <DialogTitle>{image.alt}</DialogTitle>
+                                <DialogDescription>
+                                    Viewing image from {image.category} category
+                                </DialogDescription>
+                             </DialogHeader>
                              <div className="relative w-full h-[80vh]">
                                 <Image
                                     src={image.src || "/placeholder.svg"}
